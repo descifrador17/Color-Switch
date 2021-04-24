@@ -6,7 +6,6 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 class GameScene: SKScene{
     
@@ -37,14 +36,14 @@ class GameScene: SKScene{
     //MARK: Layout Scene
     private func layoutScene(){
         
-        //colorSwitch
-        setupColorSwitch()
-        
         //scoreLabel
         setupScoreLabel()
+        
+        //colorSwitch
+        setupColorSwitch()
 
         //spawnBall
-        spawnBall()
+        setupSpawnBall()
     }
     
     //MARK: Setup Color Switch
@@ -67,12 +66,8 @@ class GameScene: SKScene{
         addChild(scoreLabel)
     }
     
-    private func updateScoreLabel(){
-        scoreLabel.text = "\(score)"
-    }
-    
     //MARK: Spawn Ball
-    private func spawnBall(){
+    private func setupSpawnBall(){
         currentColorIndex = Int(arc4random_uniform(UInt32(4)))
         
         let ball = SKSpriteNode(texture: SKTexture(imageNamed: "ball"), color: PlayColours.colors[currentColorIndex!], size: CGSize(width: ballRadius*2, height: ballRadius*2))
@@ -87,6 +82,11 @@ class GameScene: SKScene{
         addChild(ball)
     }
     
+    //MARK: Update Score Label
+    private func updateScoreLabel(){
+        scoreLabel.text = "\(score)"
+    }
+    
     //MARK: Turn Wheel
     private func turnWheel(){
         colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.2))
@@ -99,7 +99,14 @@ class GameScene: SKScene{
     
     //MARK: Game Over
     private func gameOver(){
-        scoreLabel.text = "Game Over"
+        UserDefaults.standard.set(score, forKey: AppKeys.RECENT_SCORE_KEY)
+        if score > UserDefaults.standard.integer(forKey: AppKeys.HIGHSCORE_KEY){
+            UserDefaults.standard.set(score, forKey: AppKeys.HIGHSCORE_KEY)
+        }
+        
+        //moving back to Menu
+        let menuScene = MenuScene(size: view!.bounds.size)
+        view!.presentScene(menuScene)
     }
     
 }
@@ -124,7 +131,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     updateScoreLabel()
                     ball.run(SKAction.fadeOut(withDuration: 0.0),completion: {
                         ball.removeFromParent()
-                        self.spawnBall()
+                        self.setupSpawnBall()
                     })
                 }
                 else{
