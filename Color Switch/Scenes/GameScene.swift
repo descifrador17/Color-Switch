@@ -130,6 +130,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     score += 1
                     updateScoreLabel()
                     ball.run(SKAction.fadeOut(withDuration: 0.0),completion: {
+                        self.run(SKAction.playSoundFileNamed("bling", waitForCompletion: false))
                         ball.removeFromParent()
                         self.setupSpawnBall()
                     })

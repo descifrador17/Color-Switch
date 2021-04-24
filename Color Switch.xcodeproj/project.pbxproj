@@ -15,6 +15,7 @@
 		6EE5AB9B2632C0970032770E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5AB9A2632C0970032770E /* Settings.swift */; };
 		6EE5AB9E2632FFF50032770E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5AB9D2632FFF50032770E /* Utils.swift */; };
 		6EE5ABA126339A9D0032770E /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5ABA026339A9D0032770E /* MenuScene.swift */; };
+		6EE5ABA42633AA9A0032770E /* bling.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5ABA32633AA9A0032770E /* bling.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6EE5AB9A2632C0970032770E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6EE5AB9D2632FFF50032770E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6EE5ABA026339A9D0032770E /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		6EE5ABA32633AA9A0032770E /* bling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bling.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		6EE5AB93263228180032770E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6EE5ABA32633AA9A0032770E /* bling.wav */,
 				6EE5AB84263226080032770E /* Main.storyboard */,
 				6EE5AB87263226090032770E /* Assets.xcassets */,
 			);
@@ -164,6 +167,7 @@
 			files = (
 				6EE5AB86263226080032770E /* Main.storyboard in Resources */,
 				6EE5AB88263226090032770E /* Assets.xcassets in Resources */,
+				6EE5ABA42633AA9A0032770E /* bling.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
