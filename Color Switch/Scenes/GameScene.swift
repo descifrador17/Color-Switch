@@ -10,6 +10,7 @@ import SpriteKit
 class GameScene: SKScene{
     
     //MARK: Variables
+    weak var gameViewController: GameViewController!
     var colorSwitch: SKSpriteNode!
     let ballRadius:CGFloat = 20.0
     var currentSwitchState = SwitchState.red
@@ -35,6 +36,8 @@ class GameScene: SKScene{
     
     //MARK: Layout Scene
     private func layoutScene(){
+        
+        backgroundColor = UIColor(red: 0.09, green: 0.09, blue: 0.09, alpha: 1.00)
         
         //scoreLabel
         setupScoreLabel()
@@ -105,8 +108,8 @@ class GameScene: SKScene{
         }
         
         //moving back to Menu
-        let menuScene = MenuScene(size: view!.bounds.size)
-        view!.presentScene(menuScene)
+        self.removeAllChildren()
+        self.gameViewController.goToMenu()
     }
     
 }
