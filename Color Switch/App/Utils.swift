@@ -19,12 +19,6 @@ enum SwitchState : Int{
     case red, yellow, green, blue
 }
 
-enum AppKeys{
-    static let HIGHSCORE_KEY = "HighScore"
-    static let RECENT_SCORE_KEY = "RecentScore"
-}
-
-
 let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)

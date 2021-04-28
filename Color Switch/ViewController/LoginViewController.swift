@@ -5,6 +5,7 @@
 //  Created by Dayal, Utkarsh on 26/04/21.
 //
 
+//MARK:- Login Flow
 /*
  Flow of Login
  
@@ -21,6 +22,7 @@
  After 1 and 2 of Both Actions WRITE TO DATABASE
  */
 
+//MARK:- Login View Controller
 import UIKit
 import CoreData
 
@@ -30,42 +32,43 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
     }
     
+    //All the required Operations Before Performing Segue
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
+    
+        //Check if the Fields are Valid (Not Empty, no spaces, matches the Criteria)
         if !fieldsAreValid(){
-            let alert = UIAlertController(title: "INCORRECT DATA", message: "Please check the filled data", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "CLOSE", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-
-             // prevent segue from occurring
+            showAlert(withTitle: "INCORRECT CREDENTIALS", withMessage: "Please enter valid Username and Password")
             return false
         }
         
-        
+        //Should __Login Segue__ should be initiated
+        //Checks 1. Username found in Database | 2. Password Matches
         if identifier == "loginSegue" {
             let segueShouldOccur = foundInDatabase() && didPasswordMatch()
             if !segueShouldOccur {
-                let alert = UIAlertController(title: "LOGIN FAILED", message: "Pass not match | no username", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "CLOSE", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-
-                 // prevent segue from occurring
+                if !foundInDatabase(){
+                    showAlert(withTitle: "USER NOT FOUND", withMessage: "Please Signup")
+                }
+                else if !didPasswordMatch(){
+                    showAlert(withTitle: "MHMMMMMMM!!!", withMessage: "Your Password Doesn't Match")
+                }
+                    
                 return false
             }
+            
+            let user = getUserfromUsername()
+            appDelegate.currentUserID = user!.id
+            
         }
         
+        //Should Signup Segue should be initiated
+        //Checks 1. Username found in Database
         if identifier == "signupSegue"{
             let segueShouldOccur = foundInDatabase()
             if segueShouldOccur {
-                let alert = UIAlertController(title: "AAAHHHHHH!!!!", message: "Username already taken", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "CLOSE", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-
-                 // prevent segue from occurring
+                showAlert(withTitle: "AHHHH!!!", withMessage: "Username Already Taken")
                 return false
             }
             
@@ -94,6 +97,9 @@ class LoginViewController: UIViewController {
 
 //MARK: - Helper Functions
 extension LoginViewController{
+    
+    //MARK: Logical Helpers
+    
     func validateName(_ name: String) -> Bool{
         let nameRegEx = "[A-Za-z]{1,}"
         let namePred = NSPredicate(format:"SELF MATCHES [c] %@", nameRegEx)
@@ -102,24 +108,6 @@ extension LoginViewController{
     
     private func fieldsAreValid() -> Bool{
         return validateName(self.usernameField.text!) && validateName(self.passwordField.text!)
-    }
-    
-    private func foundInDatabase() -> Bool{
-        var listOfUsers = [User]()
-        let request = User.fetchRequest() as NSFetchRequest<User>
-        let pred = NSPredicate(format: "username == %@", usernameField.text!)
-        request.predicate = pred
-        
-        do{
-            listOfUsers = try managedObjectContext.fetch(request)
-        } catch {
-            print("Error Fetching Data")
-        }
-        if (listOfUsers.isEmpty){
-            return false
-        }
-        print(listOfUsers[0].username == usernameField.text!)
-        return listOfUsers[0].username == usernameField.text!
     }
     
     private func didPasswordMatch() -> Bool{
@@ -138,6 +126,48 @@ extension LoginViewController{
         }
         return listOfUsers[0].password == passwordField.text
     }
+    
+    //MARK: Database Helpers
+    private func foundInDatabase() -> Bool{
+        var listOfUsers = [User]()
+        let request = User.fetchRequest() as NSFetchRequest<User>
+        let pred = NSPredicate(format: "username == %@", usernameField.text!)
+        request.predicate = pred
+        
+        do{
+            listOfUsers = try managedObjectContext.fetch(request)
+        } catch {
+            print("Error Fetching Data")
+        }
+        if (listOfUsers.isEmpty){
+            return false
+        }
+        print(listOfUsers[0].username == usernameField.text!)
+        return listOfUsers[0].username == usernameField.text!
+    }
+    
+    private func getUserfromUsername() -> User?{
+        var listOfUsers = [User]()
+        let request = User.fetchRequest() as NSFetchRequest<User>
+        let pred = NSPredicate(format: "username == %@", usernameField.text!)
+        request.predicate = pred
+        
+        do{
+            listOfUsers = try managedObjectContext.fetch(request)
+        } catch {
+            print("Error Fetching Data")
+        }
+        return listOfUsers[0]
+    }
+    
+    //MARK: Other Helpers
+    private func showAlert(withTitle title: String, withMessage message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "CLOSE", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 }
 
 
