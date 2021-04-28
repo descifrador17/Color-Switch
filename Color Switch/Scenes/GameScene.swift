@@ -102,13 +102,9 @@ class GameScene: SKScene{
     
     //MARK: Game Over
     private func gameOver(){
-        UserDefaults.standard.set(score, forKey: AppKeys.RECENT_SCORE_KEY)
-        if score > UserDefaults.standard.integer(forKey: AppKeys.HIGHSCORE_KEY){
-            UserDefaults.standard.set(score, forKey: AppKeys.HIGHSCORE_KEY)
-        }
-        
         //moving back to Menu
         self.removeAllChildren()
+        self.gameViewController.score = self.score
         self.gameViewController.goToMenu()
     }
     

@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E67-O3-ph0">
-                                <rect key="frame" x="82" y="528" width="250" height="40"/>
+                                <rect key="frame" x="82" y="508" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5dw-hR-azJ"/>
                                     <constraint firstAttribute="width" constant="250" id="puu-Of-6TK"/>
@@ -43,7 +43,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rVQ-Wi-F1P">
-                                <rect key="frame" x="82" y="603" width="250" height="40"/>
+                                <rect key="frame" x="82" y="568" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Hg6-ld-KgH"/>
                                     <constraint firstAttribute="width" constant="250" id="OrO-J8-pdC"/>
@@ -70,7 +70,27 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="L0c-pL-qaN" kind="show" id="acq-4c-lkL"/>
+                                    <segue destination="L0c-pL-qaN" kind="show" identifier="loginSegue" id="IIe-VZ-ai4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdn-qn-uy9">
+                                <rect key="frame" x="82" y="658" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.18436905740000001" green="0.80531913040000003" blue="0.44307506079999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="0OM-HR-8aE"/>
+                                    <constraint firstAttribute="width" constant="250" id="BKL-PN-Ion"/>
+                                    <constraint firstAttribute="height" constant="40" id="l4d-Hv-IAq"/>
+                                    <constraint firstAttribute="height" constant="40" id="l4o-OM-XJD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Signup">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="L0c-pL-qaN" kind="show" identifier="signupSegue" id="UOf-OL-JMh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -78,12 +98,14 @@
                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6cM-ab-Uid" firstAttribute="top" secondItem="cfu-ij-U7f" secondAttribute="top" constant="100" id="0ar-7e-RR9"/>
-                            <constraint firstItem="sr9-Qv-mDO" firstAttribute="top" secondItem="rVQ-Wi-F1P" secondAttribute="bottom" constant="75" id="Bi0-YM-bPI"/>
+                            <constraint firstItem="jdn-qn-uy9" firstAttribute="top" secondItem="rVQ-Wi-F1P" secondAttribute="bottom" constant="50" id="2ep-BY-9Lp"/>
                             <constraint firstItem="rVQ-Wi-F1P" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="CzZ-d3-gnc"/>
-                            <constraint firstItem="rVQ-Wi-F1P" firstAttribute="top" secondItem="E67-O3-ph0" secondAttribute="bottom" constant="35" id="OHt-A7-GY9"/>
+                            <constraint firstItem="rVQ-Wi-F1P" firstAttribute="top" secondItem="E67-O3-ph0" secondAttribute="bottom" constant="20" id="OHt-A7-GY9"/>
                             <constraint firstItem="MXm-5D-1Me" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="V2o-La-gdt"/>
                             <constraint firstItem="6cM-ab-Uid" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="W28-pk-vi4"/>
+                            <constraint firstItem="sr9-Qv-mDO" firstAttribute="top" secondItem="jdn-qn-uy9" secondAttribute="bottom" constant="20" id="adx-gz-Ppf"/>
                             <constraint firstItem="sr9-Qv-mDO" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="cfl-Sa-CLq"/>
+                            <constraint firstItem="jdn-qn-uy9" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="eDS-Df-xei"/>
                             <constraint firstItem="MXm-5D-1Me" firstAttribute="top" secondItem="6cM-ab-Uid" secondAttribute="bottom" constant="50" id="hsn-Nk-kfF"/>
                             <constraint firstItem="cfu-ij-U7f" firstAttribute="bottom" secondItem="sr9-Qv-mDO" secondAttribute="bottom" constant="50" id="tS3-44-lJ2"/>
                             <constraint firstItem="E67-O3-ph0" firstAttribute="centerX" secondItem="wwe-d5-AnD" secondAttribute="centerX" id="uxt-kv-fwI"/>
@@ -121,9 +143,6 @@
                                     <constraint firstAttribute="width" constant="34" id="tsW-Qg-et0"/>
                                 </constraints>
                                 <state key="normal" image="logout"/>
-                                <connections>
-                                    <action selector="logout:" destination="L0c-pL-qaN" eventType="touchUpInside" id="u6Q-TF-Uz2"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Podium" translatesAutoresizingMaskIntoConstraints="NO" id="Qlt-F4-pfJ">
                                 <rect key="frame" x="169.5" y="100" width="75" height="75"/>
@@ -151,14 +170,14 @@
                                                     <constraint firstAttribute="width" constant="22" id="fZn-WI-7D2"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can be here!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="pwz-gp-ZKP">
-                                                <rect key="frame" x="54" y="12.5" width="213" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="pwz-gp-ZKP">
+                                                <rect key="frame" x="54" y="12.5" width="219.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbB-5a-F36">
-                                                <rect key="frame" x="273" y="12.5" width="11" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbB-5a-F36">
+                                                <rect key="frame" x="279.5" y="12.5" width="4.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -175,7 +194,7 @@
                                             <constraint firstItem="pwz-gp-ZKP" firstAttribute="centerY" secondItem="Xac-qa-4JW" secondAttribute="centerY" id="tvc-C9-0QG"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-QL-FuP">
@@ -188,14 +207,14 @@
                                                     <constraint firstAttribute="height" constant="26" id="qlw-jH-cfS"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can be here!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bEO-ha-TBp">
-                                                <rect key="frame" x="54" y="12.5" width="213" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bEO-ha-TBp">
+                                                <rect key="frame" x="54" y="12.5" width="219.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JJ-8M-Gcs">
-                                                <rect key="frame" x="273" y="12.5" width="11" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JJ-8M-Gcs">
+                                                <rect key="frame" x="279.5" y="12.5" width="4.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -211,6 +230,9 @@
                                             <constraint firstItem="bEO-ha-TBp" firstAttribute="leading" secondItem="1Cd-6q-zYh" secondAttribute="trailing" constant="16" id="hw0-tL-vir"/>
                                             <constraint firstItem="3JJ-8M-Gcs" firstAttribute="leading" secondItem="bEO-ha-TBp" secondAttribute="trailing" constant="6" id="kzL-X6-dsN"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-lk-Vnt">
                                         <rect key="frame" x="0.0" y="140" width="300" height="50"/>
@@ -222,14 +244,14 @@
                                                     <constraint firstAttribute="height" constant="26" id="baC-NM-9ZV"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can be here!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="MD2-jm-aAC">
-                                                <rect key="frame" x="54" y="12.5" width="213" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="MD2-jm-aAC">
+                                                <rect key="frame" x="54" y="12.5" width="219.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-x8-eD8">
-                                                <rect key="frame" x="273" y="12.5" width="11" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6K-x8-eD8">
+                                                <rect key="frame" x="279.5" y="12.5" width="4.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -245,6 +267,9 @@
                                             <constraint firstAttribute="trailing" secondItem="S6K-x8-eD8" secondAttribute="trailing" constant="16" id="oNr-JW-27f"/>
                                             <constraint firstItem="33M-sD-LXd" firstAttribute="centerY" secondItem="tMQ-lk-Vnt" secondAttribute="centerY" id="vBj-vJ-7vo"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -257,8 +282,8 @@
                                     <constraint firstItem="Wal-QL-FuP" firstAttribute="centerY" secondItem="7AN-tr-vo8" secondAttribute="centerY" id="yEt-L0-17g"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNd-AX-ALb">
-                                <rect key="frame" x="135" y="586" width="144.5" height="38.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Last Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNd-AX-ALb">
+                                <rect key="frame" x="104" y="586" width="206" height="38.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
                                 <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -270,7 +295,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnR-EW-9lb">
-                                <rect key="frame" x="28" y="32" width="123" height="34.5"/>
+                                <rect key="frame" x="28" y="32" width="316" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="25"/>
                                 <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -281,6 +306,7 @@
                         <constraints>
                             <constraint firstItem="qeA-Wd-mUY" firstAttribute="trailing" secondItem="Wkg-Eg-BeW" secondAttribute="trailing" constant="28" id="3wL-iz-edW"/>
                             <constraint firstItem="7AN-tr-vo8" firstAttribute="centerX" secondItem="7uJ-dm-GK4" secondAttribute="centerX" id="I5E-zl-GA2"/>
+                            <constraint firstItem="Wkg-Eg-BeW" firstAttribute="leading" secondItem="nnR-EW-9lb" secondAttribute="trailing" constant="8" id="IDi-ZV-PZi"/>
                             <constraint firstItem="oNd-AX-ALb" firstAttribute="centerX" secondItem="7uJ-dm-GK4" secondAttribute="centerX" id="RNA-fS-dYv"/>
                             <constraint firstItem="qeA-Wd-mUY" firstAttribute="bottom" secondItem="cH9-Wh-rnJ" secondAttribute="bottom" constant="21" id="TNq-fR-nb5"/>
                             <constraint firstItem="Wkg-Eg-BeW" firstAttribute="top" secondItem="qeA-Wd-mUY" secondAttribute="top" constant="32" id="V6C-eM-8p9"/>
@@ -299,6 +325,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="kjf-TI-3md"/>
                     <connections>
+                        <outlet property="currentScoreLabel" destination="Gjk-OH-kTO" id="Gvd-mK-oSI"/>
+                        <outlet property="posOneScoreLabel" destination="MbB-5a-F36" id="rsW-8a-S3r"/>
+                        <outlet property="posOneUsernameLabel" destination="pwz-gp-ZKP" id="cEt-i6-34c"/>
+                        <outlet property="posThreeScoreLabel" destination="S6K-x8-eD8" id="22S-Nu-9Ca"/>
+                        <outlet property="posThreeUsernameLabel" destination="MD2-jm-aAC" id="WkU-1m-hON"/>
+                        <outlet property="posTwoScoreLabel" destination="3JJ-8M-Gcs" id="k33-9D-qbO"/>
+                        <outlet property="posTwoUsernameLabel" destination="bEO-ha-TBp" id="8eh-bR-y7P"/>
+                        <outlet property="usernameLabel" destination="nnR-EW-9lb" id="s46-fd-Wwj"/>
                         <segue destination="kZ6-p6-DRv" kind="show" identifier="logout" id="Jut-lT-M3p"/>
                     </connections>
                 </viewController>
@@ -344,7 +378,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="acq-4c-lkL"/>
+        <segue reference="UOf-OL-JMh"/>
         <segue reference="Jut-lT-M3p"/>
     </inferredMetricsTieBreakers>
     <resources>
