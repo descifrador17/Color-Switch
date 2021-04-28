@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import CoreData
 
 enum PlayColours {
     static let colors = [UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0),
@@ -24,3 +25,19 @@ enum AppKeys{
 }
 
 
+let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+
+func getCurrentUser() -> User?{
+    let request = User.fetchRequest() as NSFetchRequest<User>
+    let predicate = NSPredicate(format: "id == %@", appDelegate.currentUserID! as CVarArg)
+    request.predicate = predicate
+    do{
+        let users = try managedObjectContext.fetch(request)
+        return users[0]
+    } catch {
+        print("Records not found")
+    }
+    return User()
+}

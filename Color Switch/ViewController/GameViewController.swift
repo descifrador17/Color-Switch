@@ -12,6 +12,7 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var gameScene: GameScene!
+    var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,14 @@ class GameViewController: UIViewController {
     }
     
     func goToMenu(){
+        let user = getCurrentUser()
+        
+        let score = Score(context: managedObjectContext)
+        score.id = UUID()
+        score.score = Int64(self.score)
+        
+        user?.addToScores(score)
+        
         performSegue(withIdentifier: "GameOver", sender: nil)
     }
 }

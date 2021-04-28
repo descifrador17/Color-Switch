@@ -6,21 +6,73 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var posOneUsernameLabel: UILabel!
+    @IBOutlet weak var posTwoUsernameLabel: UILabel!
+    @IBOutlet weak var posThreeUsernameLabel: UILabel!
+    @IBOutlet weak var posOneScoreLabel: UILabel!
+    @IBOutlet weak var posTwoScoreLabel: UILabel!
+    @IBOutlet weak var posThreeScoreLabel: UILabel!
+    @IBOutlet weak var currentScoreLabel: UILabel!
+    
+    var userID: UUID?
+    var user: User?
+    var scores: [Score]?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchUserData()
+        getTopScorers()
+        
+        self.posOneScoreLabel.text = String(scores?[0].score ?? Int64(0))
+        self.posOneUsernameLabel.text = String(scores?[0].user?.username ?? " ")
+        if scores!.count > 1{
+            self.posTwoScoreLabel.text = String(scores?[1].score ?? Int64(0))
+            self.posTwoUsernameLabel.text = String(scores?[1].user?.username ?? " ")
+        }
 
+        if scores!.count > 2 {
+            self.posThreeScoreLabel.text = String(scores?[2].score ?? Int64(0))
+            self.posThreeUsernameLabel.text = String(scores?[2].user?.username ?? " ")
+        }
+        
+        
+        let userScoresArray = (user?.scores!.array) as! [Score]
+        currentScoreLabel.text = String( userScoresArray[userScoresArray.count-1].score )
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print(appDelegate.currentUserID!)
+        
+        
+        
     }
+
     
     @IBAction func logout(_ sender: Any) {
-        viewWillDisappear(true)
         performSegue(withIdentifier: "logout", sender: nil)
-        viewDidDisappear(true)
     }
     
+    private func fetchUserData(){
+        user = getCurrentUser()
+        usernameLabel.text = user?.username?.capitalized
+    }
+    
+    private func getTopScorers(){
+        let request = Score.fetchRequest() as NSFetchRequest<Score>
+        let sort = NSSortDescriptor(key: "score", ascending: false)
+        request.sortDescriptors = [sort]
+        do{
+            self.scores = try managedObjectContext.fetch(request)
+        } catch {
+            print("Records not found")
+        }
+    }
 
 }
