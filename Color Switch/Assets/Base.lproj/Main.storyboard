@@ -143,6 +143,9 @@
                                     <constraint firstAttribute="width" constant="34" id="tsW-Qg-et0"/>
                                 </constraints>
                                 <state key="normal" image="logout"/>
+                                <connections>
+                                    <segue destination="kZ6-p6-DRv" kind="show" identifier="logout" id="JTF-xJ-73m"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Podium" translatesAutoresizingMaskIntoConstraints="NO" id="Qlt-F4-pfJ">
                                 <rect key="frame" x="169.5" y="100" width="75" height="75"/>
@@ -333,7 +336,6 @@
                         <outlet property="posTwoScoreLabel" destination="3JJ-8M-Gcs" id="k33-9D-qbO"/>
                         <outlet property="posTwoUsernameLabel" destination="bEO-ha-TBp" id="8eh-bR-y7P"/>
                         <outlet property="usernameLabel" destination="nnR-EW-9lb" id="s46-fd-Wwj"/>
-                        <segue destination="kZ6-p6-DRv" kind="show" identifier="logout" id="Jut-lT-M3p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxl-fd-5TZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -379,7 +381,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="UOf-OL-JMh"/>
-        <segue reference="Jut-lT-M3p"/>
+        <segue reference="JTF-xJ-73m"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ColorCircle" width="400.5" height="400.5"/>
